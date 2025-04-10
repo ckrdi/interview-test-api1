@@ -60,7 +60,7 @@ RSpec.describe 'Api::V1::Jobs', type: :request do
           user_id: @user.id
         }
       }
-  
+
       expect(response).to have_http_status(:created)
       expect(response_json['title']).to eql(title)
       expect(response_json['description']).to eql(description)
@@ -73,10 +73,10 @@ RSpec.describe 'Api::V1::Jobs', type: :request do
           title: '',
           description: '',
           status: '',
-          user: nil,
+          user: nil
         }
       }
-  
+
       expect(response).to have_http_status(:unprocessable_content)
       expect(response_json['errors']).to contain_exactly(
         "Title can't be blank",
@@ -94,10 +94,10 @@ RSpec.describe 'Api::V1::Jobs', type: :request do
 
       put "/api/v1/jobs/#{@job.id}", params: {
         job: {
-          title: title,
+          title: title
         }
       }
-  
+
       expect(response).to have_http_status(:ok)
       expect(response_json['title']).to eql(title)
     end
@@ -108,10 +108,10 @@ RSpec.describe 'Api::V1::Jobs', type: :request do
           title: '',
           description: '',
           status: '',
-          user_id: nil,
+          user_id: nil
         }
       }
-  
+
       expect(response).to have_http_status(:unprocessable_content)
       expect(response_json['errors']).to contain_exactly(
         "Title can't be blank",
@@ -126,7 +126,7 @@ RSpec.describe 'Api::V1::Jobs', type: :request do
   describe 'DELETE /api/v1/jobs/:id' do
     it 'returns nothing' do
       delete "/api/v1/jobs/#{@job.id}"
-  
+
       expect(response).to have_http_status(:no_content)
     end
   end

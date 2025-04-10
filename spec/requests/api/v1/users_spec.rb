@@ -49,10 +49,10 @@ RSpec.describe 'Api::V1::Users', type: :request do
         user: {
           name: name,
           email: email,
-          phone: phone,
+          phone: phone
         }
       }
-  
+
       expect(response).to have_http_status(:created)
       expect(response_json['name']).to eql(name)
       expect(response_json['email']).to eql(email)
@@ -64,10 +64,10 @@ RSpec.describe 'Api::V1::Users', type: :request do
         user: {
           name: '',
           email: '',
-          phone: '',
+          phone: ''
         }
       }
-  
+
       expect(response).to have_http_status(:unprocessable_content)
       expect(response_json['errors']).to contain_exactly(
         "Name can't be blank",
@@ -84,10 +84,10 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
       put "/api/v1/users/#{@user.id}", params: {
         user: {
-          name: name,
+          name: name
         }
       }
-  
+
       expect(response).to have_http_status(:ok)
       expect(response_json['name']).to eql(name)
     end
@@ -97,10 +97,10 @@ RSpec.describe 'Api::V1::Users', type: :request do
         user: {
           name: '',
           email: '',
-          phone: '',
+          phone: ''
         }
       }
-  
+
       expect(response).to have_http_status(:unprocessable_content)
       expect(response_json['errors']).to contain_exactly(
         "Name can't be blank",
@@ -114,7 +114,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'DELETE /api/v1/users/:id' do
     it 'returns nothing' do
       delete "/api/v1/users/#{@user.id}"
-  
+
       expect(response).to have_http_status(:no_content)
     end
   end

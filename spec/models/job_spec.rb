@@ -5,21 +5,21 @@ RSpec.describe Job, type: :model do
   subject { described_class.new(title: 'Job1', description: 'JobDescription1', status: 'pending', user_id: user.id) }
 
   describe 'title' do
-    it 'must be present' do    
+    it 'must be present' do
       subject.title = nil
       expect(subject).to_not be_valid
     end
   end
 
   describe 'description' do
-    it 'must be present' do    
+    it 'must be present' do
       subject.description = nil
       expect(subject).to_not be_valid
     end
   end
 
   describe 'status' do
-    it 'must be present' do    
+    it 'must be present' do
       subject.status = nil
       expect(subject).to_not be_valid
     end

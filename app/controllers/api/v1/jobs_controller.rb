@@ -1,7 +1,7 @@
 module Api
   module V1
     class JobsController < BaseController
-      before_action :set_job, only: [:show, :update, :destroy]
+      before_action :set_job, only: [ :show, :update, :destroy ]
 
       # GET /api/v1/jobs
       def index

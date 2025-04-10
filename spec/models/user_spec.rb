@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
   describe 'validations' do
     describe 'name' do
-      it 'must be present' do    
+      it 'must be present' do
         subject.name = nil
         expect(subject).to_not be_valid
       end
