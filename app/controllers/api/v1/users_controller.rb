@@ -5,7 +5,10 @@ module Api
 
       # GET /api/v1/users
       def index
-        @users = User.all
+        ids = Rails.cache.fetch("users_ids", expires_in: 12.hours) do
+          User.pluck(:id)
+        end
+        @users = User.where(id: ids)
         render json: @users
       end
 
